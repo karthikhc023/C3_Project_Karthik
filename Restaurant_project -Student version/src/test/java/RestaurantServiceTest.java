@@ -14,6 +14,7 @@ class RestaurantServiceTest {
     Restaurant restaurant;
 
 
+
     //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
@@ -90,7 +91,7 @@ class RestaurantServiceTest {
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
-        restaurant.addToMenu("maggie", 200);
+        restaurant.addToMenu("maggie", 100);
         restaurant.addToMenu("fried rice", 250);
 
         List<String> it = new ArrayList<String>();

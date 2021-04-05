@@ -4,16 +4,17 @@ import java.util.List;
 
 public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
+    int cost;
+    List<Item> lt = new ArrayList<>();
 
-    public Restaurant findRestaurantByName(String restaurantName)throws restaurantNotFoundException{
-       for(Restaurant restaurant: restaurants) {
-            if(restaurant.getName().equals(restaurantName))
+    public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
+        for (Restaurant restaurant : restaurants) {
+            if (restaurant.getName().equals(restaurantName))
                 return restaurant;
         }
         throw new restaurantNotFoundException(restaurantName);
 
     }
-
 
 
     public Restaurant addRestaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
@@ -32,8 +33,18 @@ public class RestaurantService {
         return restaurants;
     }
 
-    public int ordercost(List<String> list){
+    public int ordercost(List<String> list) {
 
-        return 0;
+        cost = 0;
+        for (String itemname : list) {
+
+            lt.add(Restaurant.findItemByName(itemname));
+        }
+        for (Item item:lt ){
+            cost = cost + item.getPrice(item);
+        }
+
+        return cost;
     }
+
 }
